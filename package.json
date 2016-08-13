@@ -1,0 +1,28 @@
+{
+  "name": "@tools/resolve-path",
+  "version": "1.0.0",
+  "description": "替换指定匹配的资源路径为绝对路径，相对于资源根目录",
+  "main": "index.js",
+  "scripts": {
+    "eslint": "eslint index.js"
+  },
+  "pre-commit": [
+    "eslint"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "http://git.firstshare.cn/fe-tools/resolve-path.git"
+  },
+  "keywords": [
+    "resolve",
+    "assets",
+    "path",
+    "root",
+    "absolute"
+  ],
+  "author": "luoying",
+  "license": "ISC",
+  "devDependencies": {
+    "pre-commit": "^1.1.3"
+  }
+}
