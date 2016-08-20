@@ -6,22 +6,18 @@
 'use strict';
 
 const path = require('path');
+const getMatchs = require('@tools/matchs');
 
 // 匹配HTTP协议
 const REG_HTTP = /^(http[s]?|\/\/)/;
 
-module.exports = (content, base, root, regExp) => {
-  let matchs = [];
-  let match = null;
-  
-  while ((match = regExp.exec(content))) {
-    matchs.push(match);
-  }
+module.exports = (content, dirname, root, regExp) => {
+  let matchs = getMatchs(content, regExp);
 
   matchs.forEach((match) => {
     let st = match[1];
     if (path.isAbsolute(st) || REG_HTTP.test(st)) return;
-    st = path.resolve(base, st).replace(root, '');
+    st = path.resolve(dirname, st).replace(root, '');
     content = content.replace(match[1], st);
   });
 
