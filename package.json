@@ -1,6 +1,6 @@
 {
   "name": "@tools/resolve-path",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "替换指定匹配的资源路径为绝对路径，相对于资源根目录",
   "contributors": [
     "Luoying <luoying@fxiaoke.com>"
