@@ -14,10 +14,14 @@ const REG_HTTP = /^(http[s]?|\/\/)/;
 module.exports = (content, dirname, root, regExp) => {
   let matchs = getMatchs(content, regExp);
 
+  // 当跟目录非以/结尾，强制补上
+  if (!/\/$/.test(root)) root = root + '/';
+
   matchs.forEach((match) => {
     let st = match[1];
     if (path.isAbsolute(st) || REG_HTTP.test(st)) return;
     st = path.resolve(dirname, st).replace(root, '/');
+    console.log(st);
     content = content.replace(match[1], st);
   });
 
