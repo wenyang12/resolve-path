@@ -21,7 +21,6 @@ module.exports = (content, dirname, root, regExp) => {
     let st = match[1];
     if (path.isAbsolute(st) || REG_HTTP.test(st)) return;
     st = path.resolve(dirname, st).replace(root, '/');
-    console.log(st);
     content = content.replace(match[1], st);
   });
 
