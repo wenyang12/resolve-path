@@ -10,6 +10,10 @@ const getMatchs = require('@tools/matchs');
 
 // 匹配HTTP协议
 const REG_HTTP = /^(http[s]?|\/\/)/;
+// 匹配锚点(#anchor)
+const REG_ANCHOR = /^#/;
+// 匹配javascript:起始的js code
+const REG_JS = /^javascript:/;
 
 module.exports = (content, dirname, root, regExp) => {
   let matchs = getMatchs(content, regExp);
@@ -19,7 +23,14 @@ module.exports = (content, dirname, root, regExp) => {
 
   matchs.forEach((match) => {
     let st = match[1];
-    if (path.isAbsolute(st) || REG_HTTP.test(st)) return;
+
+    if (path.isAbsolute(st) ||
+      REG_HTTP.test(st) ||
+      REG_ANCHOR.test(st) ||
+      REG_JS.test(st)) {
+      return;
+    }
+
     st = path.resolve(dirname, st).replace(root, '/');
     content = content.replace(match[1], st);
   });
