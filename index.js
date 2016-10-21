@@ -9,7 +9,7 @@ const path = require('path');
 const getMatchs = require('@tools/matchs');
 
 // 匹配HTTP协议
-const REG_HTTP = /^(http[s]?|\/\/)/;
+const REG_HTTP = /^(http[s]?|\/\/|mailto:)/;
 // 匹配锚点(#anchor)
 const REG_ANCHOR = /^#/;
 // 匹配javascript:起始的js code
