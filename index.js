@@ -19,7 +19,7 @@ module.exports = (content, dirname, root, regExp) => {
   let matchs = getMatchs(content, regExp);
 
   // 当跟目录非以/结尾，强制补上
-  if (!/\/$/.test(root)) root = root + path.sep;
+  if (!/(\/|\\)$/.test(root)) root = root + path.sep;
 
   matchs.forEach((match) => {
     let st = match[1];
